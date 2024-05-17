@@ -1,41 +1,37 @@
 package collections;
 
-public class Queue<T> {
+public class Queue<T> extends Origin {
 
-    private int size = 0;
-    Node <T>head = null;
-    Node <T>tail = null;
+    private Node <T>head = null;
+    private Node <T>tail = null;
 
-    public T dequeue() {
-        
-        size--;
-
-        if (size == 0) {
-            head = null;
+    public void enqueue(T value)
+    {
+        Node<T> node = new Node<>(value);
+        if(head == null) {
+            this.head = node;
+            this.tail = node;
+            this.size++;
+            return;
         }
-
-        head = head.getNext();
-        return head.getValue();
+        tail.setNext(node);
+        node.setPrevious(tail);
+        tail = node;
+        this.size++;
     }
 
-    public void printQueue() {
+    //remove o primeiro
+    public void dequeue() 
+    {
+        if(this.head.getNext() != null) {
+            this.head = this.head.getNext();
+            this.head.setPrevious(null);
+            this.size--;
+            return;
+        }    
 
-        Node<T> current = head;
-        for (int i = 0; i < size; i++) {
-
-            System.out.println(current.getValue());
-            current = current.getNext();
-
-        }
-
-    }
-
-    public T peek() {
-        return head.getValue();
-    }
-
-    public int getSize() {
-        return size;
+        this.head = null;
+        this.size--;
     }
 
 }

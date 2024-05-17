@@ -1,32 +1,55 @@
 package collections;
 
 public class LinkedList<T> extends List<T>{
-    
-    LinkedList()
-    {
-        super();
-    }
 
-    Node<T> head = null;
-    Node<T> tail = null;
+    private Node<T> head = null;
+    private Node<T> tail = null;
 
     @Override
-    T get(int index) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'get'");
+    public T get(int index) {
+
+        if (index > size) {
+            // estoura uma excessão
+            return null;
+        }
+
+        // instancia um nó para percorer a lista
+        Node<T> current = head;
+        
+        int i = 0;
+
+        while (i != index) {
+            current = current.getNext();
+            i++;
+        }
+
+        return current.getValue();
+
     }
     @Override
-    void set(int index, T value) {
+    public void set(int index, T value) {
         
-        // Node<T> node = this.head;   
-        
-        // for (int i = 0; i < size; i++) {
+        if (index > size) {
+            // estoura uma excessão
+            return;
+        }
 
-        // }
+        // instancia um nó para percorer a lista
+        Node<T> current = head;
+        
+        int i = 0;
+
+        while (i != index) {
+            current = current.getNext();
+            i++;
+        }
+
+        current.setValue(value);
        
     }
+
     @Override
-    void add(T value) {
+    public void add(T value) {
 
         // instancia o nó
         Node<T> newnode = new Node<T>(value);
@@ -42,8 +65,5 @@ public class LinkedList<T> extends List<T>{
         tail.setNext(newnode);
         tail = newnode;
     }
-
-
-
 
 }    

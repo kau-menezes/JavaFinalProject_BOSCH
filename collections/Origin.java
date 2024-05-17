@@ -2,18 +2,13 @@ package collections;
 
 public class Origin {
     
-    Integer size;
+    protected Integer size = 0;
     
-    Origin() {
-        
-        this.size = 0;
-    }
-    
-    protected Integer getSize() {
+    public Integer getSize() {
         return this.size;
     }
 
-    protected void setSize(Integer value)
+    public void setSize(Integer value)
     {
         this.size = value;
     }

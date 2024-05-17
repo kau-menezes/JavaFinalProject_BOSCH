@@ -2,22 +2,20 @@ package collections;
 
 public class ArrayList<T> extends List<T>{
 
-    T[] data;
-    ArrayList()
+    private T[] data;
+
+    public ArrayList()
     {
-        super();
         data = (T[])(new Object[10]);
     }
     
-    
-    ArrayList( int capacity )
+    public ArrayList( int capacity )
     {
-        super();
         data = (T[])(new Object[capacity]);
     } 
 
     @Override
-    void add(T value)
+    public void add(T value)
     {   
         if ( size == data.length )
         {
@@ -36,13 +34,13 @@ public class ArrayList<T> extends List<T>{
     }
 
     @Override
-    T get(int index)
+    public T get(int index)
     {
         return this.data[index];
     }
 
     @Override
-    void set(int index, T value)
+    public void set(int index, T value)
     {
         this.data[index] = value;
     }
