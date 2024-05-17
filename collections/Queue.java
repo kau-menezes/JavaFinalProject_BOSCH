@@ -23,17 +23,24 @@ public class Queue<T> extends Origin {
     //remove o primeiro
     public T dequeue() 
     {
-        if(this.head.getNext() != null) {
-            T aux = head.getValue();
-            this.head = this.head.getNext();
-            this.head.setPrevious(null);
-            this.size--;
-            return aux;
-        }    
 
-        this.head = null;
+        if (this.head == null) {
+            // estourar erro
+            System.out.println("deu erro bobao");
+            return null;
+        }
+
+        T aux = head.getValue();
+        this.head = this.head.getNext();
+
+        if(this.head != null ) {
+            this.head.setPrevious(null);
+            // this.size--;
+        }    
+        
+        // this.head = null;
         this.size--;
-        return null;
+        return aux;
     }
 
 }

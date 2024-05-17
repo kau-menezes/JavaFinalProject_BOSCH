@@ -20,6 +20,7 @@ public class Main {
             queue.enqueue(i);
         }
 
+        System.out.printf("\n\ntamanho: %d\n\n", queue.getSize());
 
         // Linked List 
         for(int i = 0; i < 20; i++)
@@ -29,8 +30,9 @@ public class Main {
 
         //STACK & QUEUE
         System.out.println("\n\n\nSTACK\t|\tQUEUE");
-        for(int i = 0; i < DEBUG; i++) {
-            System.out.println(stack.peek() + "\t|\t" + queue.dequeue());
+        for(int i = 0; i < DEBUG + 2; i++) {
+            System.out.println(stack.peek() + "\t|\t" + queue.dequeue() + " " +queue.getSize());
+            // stack.pop();
         }
 
     }
