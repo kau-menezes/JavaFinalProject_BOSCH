@@ -1,3 +1,5 @@
+package collections;
+
 public class Origin {
     
     Integer size;

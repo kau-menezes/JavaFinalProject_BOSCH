@@ -1,3 +1,5 @@
+package collections;
+
 public class Queue<T> {
 
     private int size = 0;

@@ -1,3 +1,5 @@
+package collections;
+
 public class Node <T> {
 
     private T value;

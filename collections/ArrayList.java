@@ -1,3 +1,5 @@
+package collections;
+
 public class ArrayList<T> extends List<T>{
 
     T[] data;

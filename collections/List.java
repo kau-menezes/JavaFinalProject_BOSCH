@@ -1,3 +1,5 @@
+package collections;
+
 public abstract class List<T> extends Origin {
     List() {
         super();

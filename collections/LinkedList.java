@@ -1,3 +1,5 @@
+package collections;
+
 public class LinkedList<T> extends List<T>{
     
     LinkedList()
@@ -15,8 +17,11 @@ public class LinkedList<T> extends List<T>{
     }
     @Override
     void set(int index, T value) {
+        Node<T> node = this.head;   
         
-        
+        for (int i = 0; i < size; i++) {
+                
+        }
        
     }
     @Override
