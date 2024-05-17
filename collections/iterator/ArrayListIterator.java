@@ -7,7 +7,7 @@ public class ArrayListIterator<E> implements Iterator<E>{
     ArrayList<E> array;
     int step = -1;
 
-    ArrayListIterator(ArrayList<E> array) {
+    public ArrayListIterator(ArrayList<E> array) {
         this.array = array;
     }
 

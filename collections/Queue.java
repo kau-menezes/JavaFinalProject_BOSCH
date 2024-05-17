@@ -21,17 +21,19 @@ public class Queue<T> extends Origin {
     }
 
     //remove o primeiro
-    public void dequeue() 
+    public T dequeue() 
     {
         if(this.head.getNext() != null) {
+            T aux = head.getValue();
             this.head = this.head.getNext();
             this.head.setPrevious(null);
             this.size--;
-            return;
+            return aux;
         }    
 
         this.head = null;
         this.size--;
+        return null;
     }
 
 }

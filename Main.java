@@ -3,31 +3,35 @@ import collections.*;
 
 public class Main {
 
-    public static void main(String[] args) {
 
-        // Linked List 
+
+    public static void main(String[] args) {
+        int DEBUG =20;
+
 
         LinkedList<Integer> linkedlist = new LinkedList<>();
+        Stack<Integer> stack = new Stack<>();
+        Queue<Integer> queue = new Queue<>();
 
-        for(int i = 0; i < 20; i++)
+        for(int i = 0; i < DEBUG; i++)
         {
             linkedlist.add(i);
+            stack.push(i);
+            queue.enqueue(i);
         }
 
+
+        // Linked List 
         for(int i = 0; i < 20; i++)
         {
             System.out.println(linkedlist.get(i));
         }
 
-        System.out.println("\n------------");
-
-        linkedlist.set(4,999999);
-    
-        for(int i = 0; i < 20; i++)
-        {
-            System.out.println(linkedlist.get(i));
+        //STACK & QUEUE
+        System.out.println("\n\n\nSTACK\t|\tQUEUE");
+        for(int i = 0; i < DEBUG; i++) {
+            System.out.println(stack.peek() + "\t|\t" + queue.dequeue());
         }
-
 
     }
 

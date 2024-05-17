@@ -1,6 +1,8 @@
 package collections;
 
-public class ArrayList<T> extends List<T>{
+import collections.iterator.*;
+
+public class ArrayList<T> extends List<T> implements Iterable<T>{
 
     private T[] data;
 
@@ -44,4 +46,11 @@ public class ArrayList<T> extends List<T>{
     {
         this.data[index] = value;
     }
+
+    @Override
+    Iterator<T> iterator() {
+        ArrayListIterator<T> array = new ArrayListIterator<T>(this);
+        return array;
+    }
+    
 }
