@@ -1,6 +1,6 @@
 package collections.iterator;
 
-public interface Iterable<E> {
+public interface IterableBanana<E> {
 
     Iterator<E> iterator();
 

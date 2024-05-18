@@ -1,6 +1,5 @@
 package collections;
 
-public class Hash extends Origin
-{
+public class Hash extends Origin {
     
 }

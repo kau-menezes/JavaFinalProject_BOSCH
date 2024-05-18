@@ -1,8 +1,9 @@
 package collections.iterator;
 
 import collections.*;
+import collections.exceptions.CheckedException;
 
-public class ArrayListIterator<E> implements Iterator<E>{
+public class ArrayListIterator<E> implements Iterator<E> {
 
     ArrayList<E> array;
     int step = -1;
@@ -12,16 +13,16 @@ public class ArrayListIterator<E> implements Iterator<E>{
     }
 
     @Override
-    public E next()
-    {
+    public E next() throws CheckedException {
+
         if(hasNext())
         {
             this.step++;
             return this.array.get(step);
         }
         
-        //Estourar erro 'Checked'
-        return null;
+        throw new CheckedException("nao tem mais filhao");
+        
     }
     
     @Override

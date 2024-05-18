@@ -8,8 +8,7 @@ public class Origin {
         return this.size;
     }
 
-    public void setSize(Integer value)
-    {
+    public void setSize(Integer value) {
         this.size = value;
     }
 }

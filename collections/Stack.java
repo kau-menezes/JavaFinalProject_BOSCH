@@ -4,11 +4,13 @@ public class Stack<T> extends Origin
 {
     private T[] data;
 
+    @SuppressWarnings("unchecked")
     public Stack()
     {
         data = (T[])(new Object[10]);
     }
     
+    @SuppressWarnings("unchecked")
     public Stack( int capacity )
     {
         data = (T[])(new Object[capacity]);
@@ -18,6 +20,7 @@ public class Stack<T> extends Origin
     {   
         if ( size == data.length )
         {
+            @SuppressWarnings("unchecked")
             T[] copy = (T[])( new Object[ data.length * 2 ]);
 
             for( int i = 0 ; i < size ; i++ )

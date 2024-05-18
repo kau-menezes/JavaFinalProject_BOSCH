@@ -2,15 +2,17 @@ package collections;
 
 import collections.iterator.*;
 
-public class ArrayList<T> extends List<T> implements Iterable<T>{
+public class ArrayList<T> extends List<T> implements IterableBanana<T>{
 
     private T[] data;
 
+    @SuppressWarnings("unchecked")
     public ArrayList()
     {
         data = (T[])(new Object[10]);
     }
-    
+
+    @SuppressWarnings("unchecked")
     public ArrayList( int capacity )
     {
         data = (T[])(new Object[capacity]);
@@ -21,6 +23,7 @@ public class ArrayList<T> extends List<T> implements Iterable<T>{
     {   
         if ( size == data.length )
         {
+            @SuppressWarnings("unchecked")
             T[] copy = (T[])( new Object[ data.length * 2 ]);
 
             for( int i = 0 ; i < size ; i++ )
@@ -48,9 +51,16 @@ public class ArrayList<T> extends List<T> implements Iterable<T>{
     }
 
     @Override
-    Iterator<T> iterator() {
+    public Iterator<T> iterator() {
+        
         ArrayListIterator<T> array = new ArrayListIterator<T>(this);
         return array;
+    }
+
+    @Override
+    public Stream<T> stream() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'stream'");
     }
     
 }
