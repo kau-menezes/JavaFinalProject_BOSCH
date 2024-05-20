@@ -1,31 +1,29 @@
 package collections.iterator;
 
 import collections.*;
+import collections.exceptions.CheckedException;
 
-public class ArrayListIterator<E> implements Iterator<E>{
+public class ArrayListIterator<E> implements Iterator<E> {
 
-    ArrayList<E> array;
-    int step = -1;
+    private ArrayList<E> array;
+    private Integer step = -1;
 
     public ArrayListIterator(ArrayList<E> array) {
         this.array = array;
     }
 
     @Override
-    public E next()
-    {
-        if(hasNext())
-        {
-            this.step++;
-            return this.array.get(step);
-        }
+    public E next() throws CheckedException {
         
-        //Estourar erro 'Checked'
-        return null;
+        if(!hasNext())
+            throw new CheckedException("nao tem mais filhao");
+        
+        this.step++;
+        return this.array.get(step);
     }
     
     @Override
     public boolean hasNext() {
-        return (array.get(step + 1) == null) ? false : true;
+        return step + 1 < array.getSize();
     }
 }

@@ -2,6 +2,6 @@ package collections.iterator;
 
 public interface Iterator<E> {
 
-    E next();
-    boolean hasNext();
+    public E next();
+    public boolean hasNext();
 }

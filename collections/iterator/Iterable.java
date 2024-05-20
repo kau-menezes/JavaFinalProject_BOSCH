@@ -1,9 +1,10 @@
 package collections.iterator;
 
+import collections.Stream;
+
 public interface Iterable<E> {
 
-    Iterator<E> iterator();
-
-    Stream<E> stream();
+    public Iterator<E> iterator();
+    public Stream<E> stream();
 
 }

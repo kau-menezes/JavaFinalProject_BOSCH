@@ -1,37 +1,53 @@
 package collections;
 
-public class LinkedList<T> extends List<T>{
+import collections.exceptions.*;
+import collections.iterator.Iterable;
+import collections.iterator.Iterator;
+import collections.iterator.LinkedListIterator;
 
+public class LinkedList<T> extends List<T> implements Iterable<T>{
+    
     private Node<T> head = null;
     private Node<T> tail = null;
-
+    
     @Override
-    public T get(int index) {
-
-        if (index > size) {
-            // estoura uma excessão
-            return null;
+    public void add(T value) {
+    
+        // instancia o nó
+        Node<T> newnode = new Node<T>(value);
+        this.size++;
+    
+        if (head == null) {
+            head = newnode;
+            tail = head;
+            return;
         }
+    
+        newnode.setPrevious(tail);
+        tail.setNext(newnode);
+        tail = newnode;
+    }
+    @Override
+    public T get(int index) throws CheckedException {
 
-        // instancia um nó para percorer a lista
-        Node<T> current = head;
-        
-        int i = 0;
-
-        while (i != index) {
-            current = current.getNext();
-            i++;
+        if (index < size) {
+            // instancia um nó para percorer a lista
+            Node<T> current = head;
+    
+            while (index > 0) {
+                current = current.getNext();
+                index--;
+            }
+    
+            return current.getValue();
         }
-
-        return current.getValue();
-
+        throw new CheckedException("Indice inválido po.");
     }
     @Override
     public void set(int index, T value) {
         
-        if (index > size) {
-            // estoura uma excessão
-            return;
+        if (index >= size) {
+            throw new CheckedException("Indice inválido po.");
         }
 
         // instancia um nó para percorer a lista
@@ -45,25 +61,17 @@ public class LinkedList<T> extends List<T>{
         }
 
         current.setValue(value);
-       
     }
 
+    public Node<T> getHead() {
+        return this.head;
+    }
     @Override
-    public void add(T value) {
-
-        // instancia o nó
-        Node<T> newnode = new Node<T>(value);
-        size ++;
-
-        if (head == null) {
-            head = newnode;
-            tail = head;
-            return;
-        }
-
-        newnode.setPrevious(tail);
-        tail.setNext(newnode);
-        tail = newnode;
+    public Iterator<T> iterator() {
+        return new LinkedListIterator<T>(this);
     }
-
+    @Override
+    public Stream<T> stream() {
+        return new Stream<>(this);
+    }
 }    
