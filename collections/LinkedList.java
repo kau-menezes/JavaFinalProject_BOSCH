@@ -44,7 +44,8 @@ public class LinkedList<T> extends List<T> implements Iterable<T>{
         throw new CheckedException("Indice inválido po.");
     }
     @Override
-    public void set(int index, T value) {
+    
+    public void set(int index, T value) throws CheckedException {
         
         if (index >= size) {
             throw new CheckedException("Indice inválido po.");

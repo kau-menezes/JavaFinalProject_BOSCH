@@ -2,7 +2,6 @@ package collections;
 
 import collections.iterator.Iterable;
 import collections.iterator.Iterator;
-import collections.iterator.QueueIterator;
 
 public class Stack<T> extends Origin implements Iterable<T>
 {

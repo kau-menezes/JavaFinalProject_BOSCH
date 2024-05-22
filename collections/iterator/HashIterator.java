@@ -3,11 +3,11 @@ import collections.*;
 import collections.exceptions.CheckedException;
 
 public class HashIterator<T> implements Iterator<T>{
-    private ArrayList<T>[] hash;
+    private LinkedList<HashNode<T>>[] hash;
     private Integer i = 0;
     private Integer j = -1;
 
-    public HashIterator(ArrayList<T>[] hash){
+    public HashIterator(LinkedList<HashNode<T>>[] hash){
         this.hash = hash;
     }
 
@@ -16,7 +16,7 @@ public class HashIterator<T> implements Iterator<T>{
         if (testNext(i, j))
             throw new CheckedException("indice inválido paizão");
         
-        ArrayList<T> list = this.hash[i];
+        LinkedList<HashNode<T>> list = this.hash[i];
         while (list == null && i < this.hash.length) {
             i++;
             j = -1;
@@ -26,7 +26,7 @@ public class HashIterator<T> implements Iterator<T>{
             throw new CheckedException("indice inválido paizão");
         
         j++;
-        return this.hash[i].get(j);
+        return this.hash[i].get(j).getValue();
     }
     
     @Override
@@ -35,7 +35,7 @@ public class HashIterator<T> implements Iterator<T>{
     }
 
     private boolean testNext(Integer i, Integer j) {
-        ArrayList<T> list = this.hash[i];
+        LinkedList<HashNode<T>> list = this.hash[i];
         while (list == null && i < this.hash.length) {
             i++;
             j = -1;

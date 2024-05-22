@@ -19,12 +19,13 @@ public class Main {
             linkedlist.add(i);
             stack.push(i);
             queue.enqueue(i);
-            hash.add(i);
+            hash.add(i,i);
             arraylist.add(i);
         }
 
+        @SuppressWarnings("unused")
         Iterable<Integer> iterable = null;
-        switch (new Random().nextInt(5)) {
+        switch (3) {
             case 0:
                 iterable = linkedlist;
                 break;
@@ -41,11 +42,18 @@ public class Main {
                 iterable = arraylist;
                 break;
         }
+
+        // Iterator<Integer> interator = iterable.iterator();
+
+        // while(interator.hasNext()){
+        //     System.err.println(interator.next());
+        // }
         
-        // List<String> result = iterable
-        //     .stream()
-        //     .map(i -> i.toString())
-        //     .filter(s -> s.length() < 2)
-        //     .collect();
+        // // List<Character> result = iterable
+        // //     .stream()
+        // //     .map(i -> i.toString())
+        // //     .map(s -> s.charAt(0))
+        // //     .filter(c -> c == '7')
+        // //     .collect();
     }
 }
