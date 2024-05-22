@@ -8,8 +8,8 @@ import collections.iterator.Iterator;
 public class Hash<T> extends Origin implements Iterable<T>
 {
     LinkedList<HashNode<T>>[] hash;
-    Integer capacity = 0;
-    Integer elements = 0;
+    private Integer capacity = 0;
+    private Integer elements = 0;
     
     @SuppressWarnings("unchecked")
     public Hash(Integer capacity) {
@@ -23,7 +23,7 @@ public class Hash<T> extends Origin implements Iterable<T>
 
     @SuppressWarnings("unchecked")
     public Hash() {
-        this.capacity = 256;
+        this.capacity = 10;
         this.hash = (LinkedList<HashNode<T>>[])(new LinkedList[this.capacity]);
         for (int i = 0; i < this.hash.length; i++) {
             this.hash[i] = new LinkedList<>();   
@@ -58,48 +58,51 @@ public class Hash<T> extends Origin implements Iterable<T>
                     copy[copy_hashNode.getIndex() % this.capacity].add(copy_hashNode);
                 }
             }    
-
-                HashNode<T> hashNode = new HashNode<>(key, value);
-                copy[hashNode.getIndex() % this.capacity].add(hashNode);
-            }    
-        }
-
-
-        public T get(int index) throws CheckedException {
             
-            if (hash[index % this.capacity] == null) {
-                
-                throw new CheckedException("Index invalido pai");
-            }
+            this.hash = copy;
+        }
             
-            for (int i = 0; i < hash[index % this.capacity].getSize(); i++) {
-                
-                if(hash[index % this.capacity].get(i).getIndex() != index) {
-                    continue;
-                }
-                
-                return hash[index % this.capacity].get(i).getValue();
-            }
-            
-            throw new CheckedException("Index invalido pai");
+        HashNode<T> hashNode = new HashNode<>(key, value);
+        hash[hashNode.getIndex() % this.capacity].add(hashNode);
 
-        }
-
-
-        @Override
-        public Iterator<T> iterator() {
-            return new HashIterator<>(hash);
-        }
-
-
-        @Override
-        public Stream<T> stream() {
-            return new Stream<>(this);
-        }
-
-
+        this.elements++;
+        setSize(this.elements);
 
     }
+
+
+    public T get(int index) throws CheckedException {
+        
+        if (hash[index % this.capacity] == null) {
+            
+            throw new CheckedException("Index invalido pai");
+        }
+        
+        for (int i = 0; i < hash[index % this.capacity].getSize(); i++) {
+            
+            if(hash[index % this.capacity].get(i).getIndex() != index) {
+                continue;
+            }
+            
+            return hash[index % this.capacity].get(i).getValue();
+        }
+
+        throw new CheckedException("Index invalido pai");
+
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new HashIterator<>(hash);
+    }
+
+
+    @Override
+    public Stream<T> stream() {
+        return new Stream<>(this);
+    }
+
+}
 
 
     

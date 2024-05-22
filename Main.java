@@ -7,7 +7,7 @@ import collections.iterator.Iterable;
 
 public class Main {
     public static void main(String[] args) {
-        int DEBUG = 21;
+        int DEBUG = 50;
         LinkedList<Integer> linkedlist = new LinkedList<>();
         Stack<Integer> stack = new Stack<>();
         Queue<Integer> queue = new Queue<>();
@@ -23,9 +23,11 @@ public class Main {
             arraylist.add(i);
         }
 
+
+        Random ran = new Random();
         @SuppressWarnings("unused")
         Iterable<Integer> iterable = null;
-        switch (3) {
+        switch (ran.nextInt(5)) {
             case 0:
                 iterable = linkedlist;
                 break;
@@ -43,17 +45,14 @@ public class Main {
                 break;
         }
 
-        // Iterator<Integer> interator = iterable.iterator();
+        List<Integer> result = iterable
+        .stream()
+        .filter(i -> i < 30)
+        .collect();
 
-        // while(interator.hasNext()){
-        //     System.err.println(interator.next());
+        // Iterator<Integer> iterator = result.iterator();
+        // while(iterator.hasNext()){
+        // System.err.println(iterator.next());
         // }
-        
-        // // List<Character> result = iterable
-        // //     .stream()
-        // //     .map(i -> i.toString())
-        // //     .map(s -> s.charAt(0))
-        // //     .filter(c -> c == '7')
-        // //     .collect();
     }
 }

@@ -54,8 +54,7 @@ public class Queue<T> extends Origin implements Iterable<T> {
 
     @Override
     public Stream<T> stream() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'stream'");
+        return new Stream<>(this);
     }
 }
 

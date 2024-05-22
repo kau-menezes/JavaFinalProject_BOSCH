@@ -13,29 +13,21 @@ public class HashIterator<T> implements Iterator<T>{
 
     @Override
     public T next(){
-        if (testNext(i, j))
+        if (!testNext(i, j, true))
             throw new CheckedException("indice inválido paizão");
-        
-        LinkedList<HashNode<T>> list = this.hash[i];
-        while (list == null && i < this.hash.length) {
-            i++;
-            j = -1;
-            list = this.hash[i];
-        }
-        if (list == null)
-            throw new CheckedException("indice inválido paizão");
-        
-        j++;
-        return this.hash[i].get(j).getValue();
+        return hash[i].get(j).getValue();
     }
-    
-    @Override
+        
+        
     public boolean hasNext(){
-        return testNext(i, j);
+        return testNext(i, j, false);
     }
 
-    private boolean testNext(Integer i, Integer j) {
+    private boolean testNext(Integer i, Integer j, Boolean update) {
+        if (i >= this.hash.length)
+            return false;
         LinkedList<HashNode<T>> list = this.hash[i];
+        
         while (list == null && i < this.hash.length) {
             i++;
             j = -1;
@@ -46,8 +38,14 @@ public class HashIterator<T> implements Iterator<T>{
         
         j++;
         if (j < list.getSize())
+        {
+            if (update) {
+                this.i = i;
+                this.j = j;
+            }   
             return true;
+        }
         
-        return testNext(i + 1, -1);
+        return testNext(i + 1, -1, update);
     }
 }
