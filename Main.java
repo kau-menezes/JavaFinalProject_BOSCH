@@ -41,6 +41,7 @@ public class Main {
                 iterable = hash;
                 break;
             default:
+                
                 iterable = arraylist;
                 break;
         }
@@ -53,6 +54,8 @@ public class Main {
         // Iterator<Integer> iterator = result.iterator();
         // while(iterator.hasNext()){
         // System.err.println(iterator.next());
-        // }
+        for(int i=0; i< result.getSize(); i++){
+            System.err.println(result.get(i));
+        }
     }
 }

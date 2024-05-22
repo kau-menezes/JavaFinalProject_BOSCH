@@ -2,6 +2,7 @@ package collections;
 
 import collections.iterator.Iterable;
 import collections.iterator.Iterator;
+import collections.iterator.StackIterator;
 
 public class Stack<T> extends Origin implements Iterable<T>
 {
@@ -66,7 +67,7 @@ public class Stack<T> extends Origin implements Iterable<T>
 
     @Override
     public Iterator<T> iterator() {
-        return null;
+        return new StackIterator<>(this);
     }
 
     @Override
