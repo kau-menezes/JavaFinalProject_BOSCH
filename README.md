@@ -1,5 +1,5 @@
 ## Pojeto final de Java (impossível)
-### Feito por: @CrCardd, @juupurcino e @akauzinha47
+### Feito por: @CrCardd, @juupurcino e @kau-menezes
 
 Você já viu na disciplina que Listas Encadeadas/Ligadas tem um problema ao queremos ler seus dados visto que temos  operações até encontrar o elemento 
 desejado. Nossa ideia é implementar um padrão de projeto útil para resolver este problema e estendê-lo para padronizar a forma de se acessar qualquer coleção. A 
